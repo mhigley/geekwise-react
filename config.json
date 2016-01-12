@@ -1,7 +1,8 @@
 {
   "output": "./build",
   "locals": {
-    "title": "Bare minimum wintersmith site"
+    "url": "http://dphaener.github.io/geekwise-react/",
+    "title": "Geekwise Academy React JS Course"
   },
   "plugins": [
     "wintersmith-ejs"
