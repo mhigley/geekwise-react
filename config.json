@@ -1,0 +1,9 @@
+{
+  "output": "./build",
+  "locals": {
+    "title": "Bare minimum wintersmith site"
+  },
+  "plugins": [
+    "wintersmith-ejs"
+  ]
+}

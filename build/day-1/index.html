@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="/app.css" rel="stylesheet" />
+    <link href="/styles/app.css" rel="stylesheet" />
+    <title>Geekwise Academy | ReactJS</title>
+  </head>
+  <body>
+    <div id="wrapper">
+			<main>
+				<div id="content">
+					<div class="innertube">
+            <h1 id="day-1-the-basics">Day 1: The Basics</h1>
+<h2 id="who-is-everyone-">Who is everyone?</h2>
+<h3 id="about-me">About me</h3>
+<ul>
+<li>I&#39;ve been a web developer for about 2 1/2 years</li>
+<li>Started with Ruby/Rails, but have been full time (mostly) with React for the last 9 months</li>
+<li>I currently work for <a href="http://editllc.com/">Edit LLC</a> doing a variety of things</li>
+<li>I have built an app called <a href="https://www.getfermentable.com">FermentAble</a> that is using React on the front end</li>
+<li>Email: dphaener at gmail dot com</li>
+<li>Slack: <a href="https://geekwise-academy-frs.slack.com">https://geekwise-academy-frs.slack.com</a></li>
+</ul>
+<h3 id="about-jason">About Jason</h3>
+<ul>
+<li>All yours buddy</li>
+</ul>
+<h3 id="student-intros">Student Intros</h3>
+<ul>
+<li>What&#39;s your name?</li>
+<li>What&#39;s your career background?</li>
+<li>What technologies do you have experience with?</li>
+<li>What do you hope to get out of this class?</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<h3 id="es6">ES6</h3>
+<p>We will be developing all of our React components using the new
+<a href="https://babeljs.io/docs/learn-es2015/">ES6</a> specification for JavaScript.
+ES6 provides us with lot&#39;s of nifty new features that we&#39;ll be exploring
+during this class.</p>
+<p>This flavor of JS has not yet been adopted fully by most browsers, so
+we will have to use <a href="https://babeljs.io">Babel</a> to transpile our ES6 down
+to browser compatible ES5.</p>
+<h3 id="npm">NPM</h3>
+<p>NPM is one of the package managers for JavaScript. It has a ton of modules
+and is very well supported, so we will be using it for this class.</p>
+<h3 id="text-editor">Text Editor</h3>
+<p>Any text editor will do:</p>
+<ul>
+<li>I prefer Vim these days</li>
+<li><a href="http://www.sublimetext.com/">Sublime Text</a></li>
+<li><a href="https://atom.io">Atom</a></li>
+</ul>
+<h3 id="version-control-git-">Version Control (Git)</h3>
+<ul>
+<li>We will be using Git + GitHub exclusively for version control in this course</li>
+<li>You don&#39;t have to be a git expert right off the bat</li>
+<li>Learn commands as you go, eventually you will &quot;commit&quot; them to memory (pun intended)</li>
+<li>Resources:<ul>
+<li><a href="http://git-scm.com/book">Pro Git</a> (free online book)</li>
+<li><a href="http://try.github.io/">Code School + GitHub&#39;s Try Git</a> (interactive tutorial)</li>
+</ul>
+</li>
+<li>Have we all heard of <a href="https://github.com">GitHub</a>?</li>
+</ul>
+<h2 id="development-environment">Development Environment</h2>
+<h3 id="node">Node</h3>
+<p>We will be using Node 5.4 in this class. For those of you that do not have
+node installed, let&#39;s get that done right now.</p>
+<h4 id="mac-osx-linux">Mac OSX/Linux</h4>
+<p>I highly recommend using <a href="https://github.com/creationix/nvm">NVM</a> to manage
+and install your Node versions. Using homebrew you&#39;ll get 0.12.7, which is
+not what we want.</p>
+<p>There are two ways to install NVM:</p>
+<pre><code class="lang-bash">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">29.0</span>/install.sh | bash
+</code></pre>
+<p>or</p>
+<pre><code class="lang-bash">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">29.0</span>/install.sh | bash
+</code></pre>
+<p>The script clones the nvm repository to <code>~/.nvm</code> and adds the source line
+to your profile (<code>~/.bash_profile</code>, <code>~/.zshrc</code> or <code>~/.profile</code>).</p>
+<p>Once you have successfully installed NVM, all you need to do now is install
+node:</p>
+<pre><code class="lang-bash">nvm install <span class="number">5.4</span>
+</code></pre>
+<h4 id="windows">Windows</h4>
+<p>You&#39;re on your own. Just kidding.</p>
+<p>Go to the <a href="https://nodejs.org/en/">NodeJS</a> website and download the installer.
+Then use the installer to install Node.</p>
+<h2 id="getting-started-with-es6">Getting Started with ES6</h2>
+<p>Open up your terminal and fire up the Node REPL:</p>
+<pre><code class="lang-bash">$ node $(node --v8-options | awk <span class="string">'/harmony/ &amp;&amp; $1 ~ /^--/{print $1}'</span>)
+</code></pre>
+<p>That command will load all the harmony(ES6) options, which is needed for us to
+be able to explore all of these things in the Node REPL.</p>
+<p>If you&#39;re using Windows, this isn&#39;t going to work, so let&#39;s just grab the flags
+that we need for today:</p>
+<pre><code class="lang-bash">&gt; node --harmony-destructuring --harmony-arrow-functions --harmony-default-parameters
+</code></pre>
+<h3 id="string-interpolation">String Interpolation</h3>
+<p>ES6 now supports string interpolation, meaning we no longer need to do this:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> s = <span class="string">'Foo'</span> + bar + <span class="string">'Baz'</span>
+</code></pre>
+<p>Interpolation works by surrounding your string with backticks instead of
+quotes.</p>
+<pre><code class="lang-js"><span class="keyword">var</span> s = <span class="string">`Foo <span class="subst">${bar}</span> Baz`</span>
+</code></pre>
+<p>As you can see, we use the <code>${}</code> notation to interpolate. Anything inside
+the brackets will be interpreted, so you can not only put variables inside,
+but you can perform operations:</p>
+<pre><code class="lang-js"><span class="built_in">console</span>.log(<span class="string">`Four plus five equals <span class="subst">${4 + 5}</span>`</span>)
+</code></pre>
+<h3 id="arrow-functions">Arrow Functions</h3>
+<p>Arrow functions are a shorthand for defining a function, plus as a bonus,
+it automatically binds <code>this</code> to the function. So there&#39;s no more of this:</p>
+<pre><code class="lang-js"><span class="keyword">this</span>.number = <span class="number">2</span>
+<span class="keyword">var</span> self = <span class="keyword">this</span>
+
+<span class="keyword">var</span> addNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>{
+  <span class="keyword">return</span> self.number + number
+}
+</code></pre>
+<p>That now simply becomes:</p>
+<pre><code class="lang-js"><span class="keyword">this</span>.number = <span class="number">2</span>
+
+<span class="keyword">var</span> addNumbers = (number) =&gt; {
+  <span class="keyword">return</span> <span class="keyword">this</span>.number + number
+}
+</code></pre>
+<p>Pretty neat huh?</p>
+<p>If the function is just one line, you can write it like this:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> addNumbers = (x) =&gt; (
+  x + <span class="number">2</span>
+)
+</code></pre>
+<p>Notice how we replaced the curly braces with parens? That means two things:</p>
+<ol>
+<li>That the function can only have <em>one</em> line of code.</li>
+<li>That the function is going to implicitly return the result of that one line.</li>
+</ol>
+<p>So there&#39;s no need for a return. Awesome!</p>
+<p>Also, if it&#39;s just a one liner like above, you can write that function like this:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> addNumbers = x =&gt; x + <span class="number">2</span>
+addNumbers(<span class="number">2</span>)
+=&gt; <span class="number">4</span>
+</code></pre>
+<p>We&#39;re going to see the first type of function used quite a bit in this class
+in the form of <code>Function Components</code> which will look something like this:</p>
+<pre><code class="lang-js"><span class="keyword">export</span> <span class="keyword">default</span> ({ name, message, sender }) =&gt; (
+  <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">className</span>=<span class="value">'name'</span>&gt;</span>Hello {name}<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">className</span>=<span class="value">'message'</span>&gt;</span>{sender} wanted to tell you that {message}<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+)</span>
+</code></pre>
+<p>That may look a bit weird right now, but by the end of this class you&#39;ll be
+whipping out these stateless components like it&#39;s second nature.</p>
+<h3 id="destructuring">Destructuring</h3>
+<p>One of the weird things you may have noticed from the code sample above
+is the function declaration:</p>
+<pre><code class="lang-js"><span class="keyword">export</span> <span class="keyword">default</span> ({ name, message, sender }) =&gt; (
+</code></pre>
+<p>What we&#39;re doing there is called parameter destructuring. This function
+expects an object to be passed in as a parameter that looks like:</p>
+<pre><code class="lang-js">{
+  name: <span class="string">'Darin'</span>,
+  message: <span class="string">'You learned React'</span>,
+  sender: <span class="string">'Jason'</span>
+}
+</code></pre>
+<p>It will then assign the variables <code>name</code>, <code>message</code>, and <code>sender</code> to the
+value of the keys in that object. If the keys don&#39;t exist, the variables
+will be <code>undefined</code>.</p>
+<p>Let&#39;s try it out in the REPL:</p>
+<pre><code class="lang-js"><span class="keyword">let</span> foo = { a: <span class="string">"1"</span>, b: <span class="string">"2"</span> }
+<span class="keyword">let</span> { a, b } = foo
+<span class="built_in">console</span>.log(a, b)
+</code></pre>
+
+					</div>
+				</div>
+			</main>
+			<nav id="nav">
+				<div class="innertube">
+					<h3>Classes</h3>
+					<ul>
+						<li><a href="/day-1">Day 1</a></li>
+						<li><a href="/day-2">Day 2</a></li>
+					</ul>
+					<h3>Resources</h3>
+					<ul>
+						<li><a target="_blank" href="https://facebook.github.io/react/">React</a></li>
+						<li><a target="_blank" href="https://babeljs.io/docs/learn-es2015/">ES6 Features</a></li>
+						<li><a target="_blank" href="https://babeljs.io">Babel</a></li>
+						<li><a target="_blank" href="https://nodejs.org/en/">NodeJS</a></li>
+						<li><a target="_blank" href="https://github.com/creationix/nvm">NVM</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+  </body>
+</html>

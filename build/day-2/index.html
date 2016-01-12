@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="/app.css" rel="stylesheet" />
+    <link href="/styles/app.css" rel="stylesheet" />
+    <title>Geekwise Academy | ReactJS</title>
+  </head>
+  <body>
+    <div id="wrapper">
+			<main>
+				<div id="content">
+					<div class="innertube">
+            <h1 id="day-2-continuation-of-es6">Day 2: Continuation of ES6</h1>
+<h2 id="getting-started">Getting started</h2>
+<p>In order to be able to use all of the new features in the Node REPL we will
+have to start up Node with the following wacky command:</p>
+<pre><code class="lang-bash">$ node $(node --v8-options | awk <span class="string">'/harmony/ &amp;&amp; $1 ~ /^--/{print $1}'</span>)
+</code></pre>
+<p>What this is going to do is start up the Node REPL with every possible
+harmony flag. You can look at what these are by just typing:</p>
+<pre><code class="lang-bash">$ node --v8-options
+</code></pre>
+<p>This is really only necessary for the purposes of us getting familiar with
+all of these new features from within the Node REPL.</p>
+<p>If you&#39;re using Windows, well, this isn&#39;t going to work. We will just have to
+start your Node REPL with the flags that we need. :(</p>
+<p>So for now just start up Node like this:</p>
+<pre><code class="lang-bash">&gt; node --harmony-spread-arrays --harmony-spreadcalls
+</code></pre>
+<h3 id="default-parameters">Default Parameters</h3>
+<p>Another great feature of ES6 is that you can define default parameters in
+your function declarations. Take this code for example:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> addNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">number, otherNumber</span>) </span>{
+  <span class="keyword">if</span> (otherNumber === <span class="literal">undefined</span>) otherNumber = <span class="number">2</span>
+  <span class="keyword">return</span> number + otherNumber
+}
+</code></pre>
+<p>Using default parameters, we can now rewrite that like this:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> addNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">number, otherNumber = 2</span>) </span>{
+  <span class="keyword">return</span> number + otherNumber
+}
+</code></pre>
+<h3 id="spread-operators">Spread Operators</h3>
+<p>Spread operators are another thing that come in extremely handy when
+creating React components. I&#39;ll go over these briefly right now just so
+we have a basic understanging.</p>
+<p>Imagine we have an object:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> car = {
+  make: <span class="string">'Toyota'</span>,
+  model: <span class="string">'Corolla'</span>
+}
+</code></pre>
+<p>If we were to put this into a React component:</p>
+<pre><code class="lang-js">&lt;Car {...car} /&gt;
+</code></pre>
+<p>This would be the equivalent of saying:</p>
+<pre><code class="lang-js">&lt;Car make={car.make} model={car.model} /&gt;
+</code></pre>
+<p>It&#39;s just some nice, convenient shorthand that comes in quite handy in a lot
+of cases. Especially in re-usable components.</p>
+<h3 id="for-of">For..Of</h3>
+<p>This is another nice feature, that has actually made it&#39;s way into most
+browsers already. It allows you to easily loop through an array:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+<span class="keyword">for</span> (<span class="keyword">var</span> n <span class="keyword">of</span> a) {
+  <span class="built_in">console</span>.log(n)
+}
+</code></pre>
+<p>Just a bit of really nice shorthand that makes looping easier.</p>
+<h3 id="foreach-and-map">forEach and map</h3>
+<p>These are also a few that are already in browsers but don&#39;t get a lot of
+attention.</p>
+<pre><code class="lang-js"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+a.forEach((num, index) =&gt; <span class="built_in">console</span>.log(num, index))
+</code></pre>
+<pre><code class="lang-js"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+a.map((num) =&gt; num + <span class="number">1</span>)
+<span class="built_in">console</span>.log(a)
+</code></pre>
+<h3 id="classes">Classes</h3>
+<p>New in ES6 is the ability to create your own classes. Classes support
+inheritance, super calls, instance and static methods, and constructors.</p>
+<p>Let&#39;s create a class that we can work with:</p>
+<pre><code class="lang-js"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>{
+  constructor(make, model, year) {
+    <span class="keyword">this</span>.make = make
+    <span class="keyword">this</span>.model = model
+    <span class="keyword">this</span>.year = year
+  }
+
+  name() {
+    <span class="keyword">return</span> <span class="string">`<span class="subst">${this.year}</span> <span class="subst">${this.make}</span> <span class="subst">${this.model}</span>`</span>
+  }
+}
+
+<span class="keyword">let</span> myCar = <span class="keyword">new</span> Car(<span class="string">"Toyota"</span>, <span class="string">"Highlander"</span>, <span class="string">"2003"</span>)
+<span class="built_in">console</span>.log(myCar.name())
+</code></pre>
+<p>You can also inherit from other classes. Let&#39;s make a new class called
+<code>Vehicle</code> that will hold common information:</p>
+<pre><code class="lang-js"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>{
+  constructor(make, model, year) {
+    <span class="keyword">this</span>.make = make
+    <span class="keyword">this</span>.model = model
+    <span class="keyword">this</span>.year = year
+  }
+
+  get name() {
+    <span class="keyword">return</span> <span class="string">`<span class="subst">${this.year}</span> <span class="subst">${this.make}</span> <span class="subst">${this.model}</span>`</span>
+  }
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>{
+  get type() {
+    <span class="keyword">return</span> <span class="string">'Car'</span>
+  }
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">Truck</span> <span class="keyword">extends</span> <span class="title">Vehicle</span> </span>{
+  get type() {
+    <span class="keyword">return</span> <span class="string">'Truck'</span>
+  }
+}
+
+<span class="keyword">let</span> myCar = <span class="keyword">new</span> Car(<span class="string">"Toyota"</span>, <span class="string">"Highlander"</span>, <span class="string">"2003"</span>)
+<span class="keyword">let</span> myTruck = <span class="keyword">new</span> Truck(<span class="string">"Toyota"</span>, <span class="string">"Tacoma"</span>, <span class="string">"2005"</span>)
+
+<span class="built_in">console</span>.log(myCar.name)
+<span class="built_in">console</span>.log(myCar.type)
+<span class="built_in">console</span>.log(myTruck.name)
+<span class="built_in">console</span>.log(myTruck.type)
+</code></pre>
+<h3 id="modules">Modules</h3>
+<p>In ES6, we can easily import modules using, you guessed it, the <code>import</code> syntax.
+It looks something like this:</p>
+<pre><code class="lang-js"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
+</code></pre>
+<p>So, the React module <code>exports</code> a <code>React</code> class, probably something like this:</p>
+<pre><code class="lang-js"><span class="keyword">export</span> <span class="keyword">default</span> React
+</code></pre>
+<p>When we say <code>export default</code> in a module, we are saying that if you do not
+specify which <code>export</code> to <code>import</code> (strange language, I know), then you&#39;ll
+get the default. If we were to export things in this fashion:</p>
+<pre><code class="lang-js"><span class="keyword">export</span> <span class="keyword">default</span> React
+
+<span class="keyword">export</span> Container
+</code></pre>
+<p>Then we could import like this:</p>
+<pre><code class="lang-js"><span class="keyword">import</span> React, { Container } <span class="keyword">from</span> <span class="string">'react'</span>
+</code></pre>
+<p>Yup, you can use destructuring during an import too. Awesome!</p>
+
+					</div>
+				</div>
+			</main>
+			<nav id="nav">
+				<div class="innertube">
+					<h3>Classes</h3>
+					<ul>
+						<li><a href="/day-1">Day 1</a></li>
+						<li><a href="/day-2">Day 2</a></li>
+					</ul>
+					<h3>Resources</h3>
+					<ul>
+						<li><a target="_blank" href="https://facebook.github.io/react/">React</a></li>
+						<li><a target="_blank" href="https://babeljs.io/docs/learn-es2015/">ES6 Features</a></li>
+						<li><a target="_blank" href="https://babeljs.io">Babel</a></li>
+						<li><a target="_blank" href="https://nodejs.org/en/">NodeJS</a></li>
+						<li><a target="_blank" href="https://github.com/creationix/nvm">NVM</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+  </body>
+</html>
