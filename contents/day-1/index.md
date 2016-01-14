@@ -18,7 +18,10 @@ template: index.ejs
 
 ### About Jason
 
-- All yours buddy
+- Web developer for 8 years
+- Started with Django, now using React full time for the last year
+- I work with Daren at [Edit LLC](http://editllc.com/)
+- Email: zbyte64 at gmail dot com
 
 ### Student Intros
 
