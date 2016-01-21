@@ -18,9 +18,11 @@ That's pretty much it for the basic requirements!
 
 Too easy? Add the ability to share lists with other users!
 
-This page will be updated soon with the links to where the database will be
-hosted.
-
 Still too easy? Create your own backend!
 
 Still too easy? Use [Relay](https://facebook.github.io/relay/) to manage your data!
+
+
+## Coming Soon
+
+Database backend url and schema specification.
