@@ -41,18 +41,6 @@ let's go ahead and remove the `login` route and component.
 
 *Exercise:* Create the components needed for the home page.
 
-### Controlled and uncontrolled components
-
-React has the notion of `controlled` and `uncontrolled` components. When creating
-input components it makes a big difference whether you use `value` or `defaultValue`
-as the component attribute. When you use the `value` attribute to set an initial
-value on a component, it becomes a `controlled` component. What this means is
-that the value cannot be changed via user input. The value can *ONLY* be updated
-programatically. An `uncontrolled` component however does not have these
-restraints. You can still set an initial value for an input by using the
-`defaultValue` attribute and the component will remain an `uncontrolled`
-component.
-
 ## Unit testing your components
 
 Last week we discussed unit testing briefly, and now we're going to actually
