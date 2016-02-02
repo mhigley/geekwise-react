@@ -91,20 +91,3 @@ Let's go ahead and handle that now.
 *Discuss:* What do we need to do in order to login?
 
 *Exercise:* Wire up the login logic.
-
-## Creating the user feed
-
-Next we'll be starting on the creation of the user's feed.
-
-*Discuss:*
-  * How do we protect this route and make sure the user is logged in?
-
-*Exercise:* Protect the feed route
-
-*Discuss:*
-  * What models do we need?
-  * What fields should be on those models?
-  * What relationships should there be?
-  * What should the 'Post' component look like?
-
-*Exercise:* Begin creating the Post component
