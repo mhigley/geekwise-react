@@ -58,13 +58,6 @@ We can do the same thing for unlikes.....
 
 *Exercise:* Implement the mutations so our like state is persisted
 
-## Optimistic Updates
-
-Let's discuss optimistic updating, and how to implement it in our app.
-
-*Discuss:* What is optimistic updating?
-
-*Exercise:* Implement an optimistic update for our mutations
 
 ## Immutable.JS
 
